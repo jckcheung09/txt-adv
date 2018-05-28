@@ -54,7 +54,8 @@ function main(){
   alert('A spider tank is patrolling the area, there is a powered down predator drone nearby and you spot an opening in the spider tanks patrol route to run pass');
   var act = prompt('Enter 1 to Run away, 2 to Power drone, 3 to Engage Spider tank');
   if(act == 1 && t.hp>=10){
-    t.hp = t.hp-10;
+    t.hp=t.hp-10;
+    t.damage=t.damage+10;
     if (t.hp<=0){
       alert('MISSION FAILED \n you sustained critial damage, John Conner is doomed. Activating self distruct protocol')
       return
@@ -68,7 +69,8 @@ function main(){
     return
   }else if (act == 3 && t.ammo>=1) {
     t.ammo = t.ammo-1;
-    t.hp = t.hp-20;
+    t.hp=t.hp-20;
+    t.damage=t.damage+20;
     if(t.hp>=1){
       alert('You managed to disable the spider tank with your '+t.weapon);
     }else {
@@ -83,14 +85,16 @@ function main(){
     alert('Donald Trump is awed by your Golden body and let you pass.');
   }else if (act==1 && t.hp>0) {
     t.hp=t.hp-50;
+    t.damage=t.damage+50;
     if(t.hp>=1){
-      alert('You managed to run pass the wall suffering major damage'+t.weapon);
+      alert('You managed to run pass the wall suffering major damage');
       }else {
         alert('MISSION FAILED \nyou were shot to pieces by the guards on the wall ')
         return
       }
     }else if (act==2 && t.ammo>0) {
       t.hp=t.hp-30;
+      t.damage=t.damage+20;
       if(t.hp>=1){
         alert('You managed to destroy the wall with your'+t.weapon);
       }else {
@@ -110,6 +114,7 @@ function main(){
     console.log('T-1000');
     if (t.weapon=='Shotgun') {
       t.hp=t.hp-50;
+      t.damage=t.damage+50;
       if(t.hp>=1){
         alert('You managed to destroy the T-1000 with your'+t.weapon);
       }else {
@@ -123,7 +128,9 @@ function main(){
     alert('MISSION FAILED \nYou have no ammunition to fight with and was turned into scrap metal by T-1000, John Conner is doomed.')
     return
   }
-
+  alert('Congratulations you have cleared Terminator Returns');
+  var hscore=100-t.damage;
+  alert('Your high score is '+hscore+' out of 100');
 }
 
 main();
